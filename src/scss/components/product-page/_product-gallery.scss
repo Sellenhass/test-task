@@ -1,0 +1,42 @@
+.product-gallery{
+ display: flex;
+
+  &_list {
+    display: flex;
+    flex-direction: column;
+
+    margin-right: vw(40px);
+  }
+
+  &_list-img-wrapper {
+    width: vw(79px);
+    height: vw(80px);
+    overflow: hidden;
+    display: inline-flex;
+
+    margin-bottom: vw(40px);
+  }
+
+  &_list-img-wrapper:last-child {
+    margin-bottom: 0;
+  }
+
+  &_list-img {
+    object-fit: cover;
+    flex: 1;
+
+    cursor: pointer;
+  }
+
+  &_main-img-wrapper {
+    width: vw(610px);
+    height: vw(511px);
+    overflow: hidden;
+    display: inline-flex;
+  }
+
+  &_main-img {
+    object-fit: contain;
+    flex: 1;
+  }
+}

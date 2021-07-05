@@ -1,0 +1,33 @@
+.cart {
+  &_btn {
+  @include input-reset;
+    width: vw(20px);
+    height: vw(20px);
+
+    cursor: pointer;
+    position: relative;
+  }
+  &_btn-counter {
+    width: vw(20px);
+    height: vw(20px);
+
+    position: absolute;
+    left: vw(13px);
+    top: vw(-10px);
+
+    padding: vw(2px);
+
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: vw(14px);
+    color: #fff;
+
+    background-color: #000;
+    border-radius: 100%;
+  }
+
+  &_btn-image {
+    width: vw(20px);
+    height: vw(20px);
+  }
+}

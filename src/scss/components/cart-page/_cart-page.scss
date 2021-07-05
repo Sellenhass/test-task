@@ -1,0 +1,130 @@
+.cart-page {
+  display: flex;
+  flex-direction: column;
+
+  &_title {
+    font-size: vw(32px);
+    text-transform: uppercase;
+    font-weight: 800;
+
+    margin-bottom: vw(60px);
+  }
+
+  &_products-list {
+    width: vw(1097px);
+
+    list-style-type: none;
+
+    padding-bottom: vw(54px);
+  }
+
+  &_product {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: vw(20px);
+    padding-top: vw(20px);
+
+    border-top: vw(1px) solid #E5E5E5;
+  }
+
+  &_product-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &_product-name {
+    font-size: vw(30px);
+    font-weight: 700;
+  }
+
+  &_product-price {
+    font-size: vw(24px);
+    font-weight: 800;
+  }
+
+  &_product-option {
+    width: vw(63px);
+    height: vw(45px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Source Sans Pro;
+    font-size: vw(16px);
+
+    border: vw(1px) solid #000;
+
+    margin-right: vw(12px);
+  }
+
+  &_product-btns-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-right: vw(10px);
+  }
+
+  &_product-btn {
+    @include input-reset;
+
+    width: vw(45px);
+    height: vw(45px);
+
+    border: vw(1px) solid #000;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &_product-amount {
+    font-size: vw(24px);
+    font-weight: 500;
+  }
+
+  &_product-img-wrapper {
+    width: vw(141px);
+    height: vw(185px);
+
+    overflow: hidden;
+
+    display: inline-flex;
+    position: relative;
+  }
+
+  &_product-img {
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &_product-img-btn-left {
+    @include  input-reset;
+
+    position: absolute;
+    left: vw(3px);
+    top: vw(85px);
+  }
+
+  &_product-img-btn-right {
+    @include  input-reset;
+
+    position: absolute;
+    right: vw(3px);
+    top: vw(85px);
+  }
+
+  &_btn-image-left {
+  filter: brightness(30%);
+  }
+
+  &_btn-image-right {
+    transform: rotate(180deg);
+    filter: brightness(20%);
+  }
+}

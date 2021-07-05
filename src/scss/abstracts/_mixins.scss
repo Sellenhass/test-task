@@ -1,0 +1,8 @@
+@mixin input-reset {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+}

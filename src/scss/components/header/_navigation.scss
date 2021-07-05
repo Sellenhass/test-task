@@ -1,0 +1,34 @@
+.navigation {
+  height: fit-content;
+
+  &_list {
+  display: flex;
+  list-style-type: none;
+  }
+
+  &_item {
+    //margin-right: vw(32px);
+  }
+
+  &_link {
+    @include input-reset;
+
+    font-size: vw(16px);
+    font-weight: 400;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #000;
+
+    cursor: pointer;
+
+    padding: 0 vw(16px) vw(30px) vw(16px);
+  }
+
+  &_link-active {
+    color: #5ECE7B;
+    font-weight: 600;
+    box-sizing: border-box;
+
+    border-bottom: vw(2px) solid #5ECE7B;
+  }
+}

@@ -1,0 +1,29 @@
+.category {
+  display: flex;
+  flex-direction: column;
+
+  &_name {
+    text-transform: capitalize;
+    font-size: vw(42px);
+
+    margin-bottom: vw(103px);
+  }
+  &_list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &_link {
+    width: vw(386px);
+
+    text-decoration: none;
+    color: #000;
+
+    margin-right: vw(20px);
+
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+
+}
