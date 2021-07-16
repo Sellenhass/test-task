@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import withApolloClient from "utils/withApolloClient";
-import { Link } from "react-router-dom";
 import { categoryQuery } from "utils/queries";
 import { connect } from "react-redux";
 import { ProductCard } from "components";
@@ -33,27 +32,19 @@ class Category extends Component {
   }
 
   render() {
+    const { products } = this.state;
+    const { categoryName, selectedCurrency } = this.props;
+
     return (
       <div className="container category">
-        <h1 className="category_name">{this.props.categoryName}</h1>
+        <h1 className="category_name">{categoryName}</h1>
         <div className="category_list">
-          {this.state.products.map((product) => (
-            <Link
+          {products.map((product) => (
+            <ProductCard
               key={product.name}
-              className="category_link"
-              to={{
-                pathname: `/${this.props.categoryName}/${product.name
-                  .split(" ")
-                  .join("-")}`,
-                state: { product },
-              }}
-            >
-              <ProductCard
-                key={product.name}
-                {...product}
-                selectedCurrency={this.props.selectedCurrency}
-              />
-            </Link>
+              product={product}
+              selectedCurrency={selectedCurrency}
+            />
           ))}
         </div>
       </div>

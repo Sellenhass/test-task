@@ -12,24 +12,27 @@ class Cart extends Component {
     };
   }
   render() {
+    const { productsInCart } = this.props;
+    const { isCartPopupOpened } = this.state;
+
     return (
       <>
         <button
           className="cart_btn"
           onClick={() =>
             this.setState({
-              isCartPopupOpened: !this.state.isCartPopupOpened,
+              isCartPopupOpened: !isCartPopupOpened,
             })
           }
         >
           <img src={cartImg} className="cart_btn-image" alt="cart" />
 
-          {this.props.productsInCart.reduce(
+          {productsInCart.reduce(
             (prevProduct, currProduct) => prevProduct + currProduct.amount,
             0
           ) ? (
             <div className="cart_btn-counter">
-              {this.props.productsInCart.reduce(
+              {productsInCart.reduce(
                 (prevProduct, currProduct) => prevProduct + currProduct.amount,
                 0
               )}
@@ -37,11 +40,11 @@ class Cart extends Component {
           ) : null}
         </button>
 
-        {this.state.isCartPopupOpened ? (
+        {isCartPopupOpened ? (
           <CartPopup
             closePopup={() =>
               this.setState({
-                isCartPopupOpened: !this.state.isCartPopupOpened,
+                isCartPopupOpened: false,
               })
             }
           />

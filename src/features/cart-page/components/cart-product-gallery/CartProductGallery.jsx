@@ -7,18 +7,32 @@ class CartProductGallery extends Component {
 
     this.state = { imageIndex: 0 };
   }
+
+  changeImageLeft(imageIndex, gallery) {
+    this.setState(
+      imageIndex !== 0
+        ? { imageIndex: imageIndex - 1 }
+        : { imageIndex: gallery.length - 1 }
+    );
+  }
+
+  changeImageRight(imageIndex, gallery) {
+    this.setState(
+      imageIndex !== gallery.length - 1
+        ? { imageIndex: imageIndex + 1 }
+        : { imageIndex: 0 }
+    );
+  }
+
   render() {
+    const { gallery } = this.props;
+    const { imageIndex } = this.state;
+
     return (
       <div className="cart-page_product-img-wrapper">
         <button
           className="cart-page_product-img-btn-left"
-          onClick={() =>
-            this.setState(
-              this.state.imageIndex !== 0
-                ? { imageIndex: this.state.imageIndex - 1 }
-                : { imageIndex: this.props.gallery.length - 1 }
-            )
-          }
+          onClick={() => this.changeImageLeft(imageIndex, gallery)}
         >
           <img
             className="cart-page_btn-image-left"
@@ -28,18 +42,12 @@ class CartProductGallery extends Component {
         </button>
         <img
           className="cart-page_product-img"
-          src={this.props.gallery[this.state.imageIndex]}
+          src={gallery[imageIndex]}
           alt="product"
         />
         <button
           className="cart-page_product-img-btn-right"
-          onClick={() =>
-            this.setState(
-              this.state.imageIndex !== this.props.gallery.length - 1
-                ? { imageIndex: this.state.imageIndex + 1 }
-                : { imageIndex: 0 }
-            )
-          }
+          onClick={() => this.changeImageRight(imageIndex, gallery)}
         >
           <img
             className="cart-page_btn-image-right"

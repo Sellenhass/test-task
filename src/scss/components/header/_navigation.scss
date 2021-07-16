@@ -13,7 +13,7 @@
   &_link {
     @include input-reset;
 
-    font-size: vw(16px);
+    font-size: 16px;
     font-weight: 400;
     text-transform: uppercase;
     text-decoration: none;
@@ -21,7 +21,7 @@
 
     cursor: pointer;
 
-    padding: 0 vw(16px) vw(30px) vw(16px);
+    padding: 0 16px 30px 16px;
   }
 
   &_link-active {
@@ -29,6 +29,6 @@
     font-weight: 600;
     box-sizing: border-box;
 
-    border-bottom: vw(2px) solid #5ECE7B;
+    border-bottom: 2px solid #5ECE7B;
   }
 }

@@ -7,6 +7,7 @@ import withApolloClient from "utils/withApolloClient";
 import { headerActions } from "components/header/duck";
 import { CURRENCY_SYMBOLS } from "constants/enums";
 import currencySwitcherArrow from "assets/images/currency-switcher-arrow.svg";
+import { CurrencySwitcherPopup } from "./components";
 
 class CurrencySwitcher extends Component {
   constructor(props) {
@@ -29,51 +30,46 @@ class CurrencySwitcher extends Component {
       });
   }
 
+  outsideClickHandler() {
+    this.setState({
+      ...this.state,
+      isSwitcherOpened: false,
+    });
+  }
+
+  toggleCurrencySwitcher() {
+    this.setState({
+      ...this.state,
+      isSwitcherOpened: !this.state.isSwitcherOpened,
+    });
+  }
+
   render() {
+    const { selectedCurrency, selectCurrency } = this.props;
+    const { isSwitcherOpened, currencies } = this.state;
+
     return (
-      <OutsideClickHandler
-        onOutsideClick={() =>
-          this.setState({
-            ...this.state,
-            isSwitcherOpened: false,
-          })
-        }
-      >
+      <OutsideClickHandler onOutsideClick={() => this.outsideClickHandler()}>
         <div className="currency-switcher">
           <button
             className="currency-switcher_btn"
-            onClick={() =>
-              this.setState({
-                ...this.state,
-                isSwitcherOpened: !this.state.isSwitcherOpened,
-              })
-            }
+            onClick={() => this.toggleCurrencySwitcher()}
           >
-            {CURRENCY_SYMBOLS[this.props.selectedCurrency]}
+            {CURRENCY_SYMBOLS[selectedCurrency]}
             <img
               className={classNames("currency-switcher_arrow", {
-                "currency-switcher_arrow-rotate": this.state.isSwitcherOpened,
+                "currency-switcher_arrow-rotate": isSwitcherOpened,
               })}
               src={currencySwitcherArrow}
               alt="arrow"
             />
           </button>
 
-          {this.state.isSwitcherOpened ? (
-            <div className="currency-switcher_popup">
-              <ul className="currency-switcher_popup-list">
-                {this.state.currencies.map((currency) => (
-                  <li
-                    key={currency}
-                    className="currency-switcher_popup-item"
-                    onClick={() => this.props.selectCurrency(currency)}
-                  >
-                    {CURRENCY_SYMBOLS[currency]}
-                    {currency}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {isSwitcherOpened ? (
+            <CurrencySwitcherPopup
+              currencies={currencies}
+              selectCurrency={selectCurrency}
+            />
           ) : null}
         </div>
       </OutsideClickHandler>

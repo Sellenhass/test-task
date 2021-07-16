@@ -7,6 +7,8 @@ import classNames from "classnames";
 
 class Navigation extends Component {
   render() {
+    const { categoryName, changeCategory } = this.props;
+
     return (
       <nav className="navigation">
         <ul className="navigation_list">
@@ -16,9 +18,9 @@ class Navigation extends Component {
                 to="/"
                 className={classNames("navigation_link", {
                   "navigation_link-active":
-                    this.props.categoryName === CATEGORY_TYPES[key],
+                    categoryName === CATEGORY_TYPES[key],
                 })}
-                onClick={() => this.props.changeCategory(CATEGORY_TYPES[key])}
+                onClick={() => changeCategory(CATEGORY_TYPES[key])}
               >
                 {CATEGORY_TYPES[key]}
               </Link>

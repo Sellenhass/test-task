@@ -1,25 +1,25 @@
 .cart {
   &_btn {
   @include input-reset;
-    width: vw(20px);
-    height: vw(20px);
+    width: 20px;
+    height: 20px;
 
     cursor: pointer;
     position: relative;
   }
   &_btn-counter {
-    width: vw(20px);
-    height: vw(20px);
+    width: 20px;
+    height: 20px;
 
     position: absolute;
-    left: vw(13px);
-    top: vw(-10px);
+    left: 13px;
+    top: -10px;
 
-    padding: vw(2px);
+    padding: 2px;
 
     font-family: Roboto;
     font-weight: 700;
-    font-size: vw(14px);
+    font-size: 14px;
     color: #fff;
 
     background-color: #000;
@@ -27,7 +27,7 @@
   }
 
   &_btn-image {
-    width: vw(20px);
-    height: vw(20px);
+    width: 20px;
+    height: 20px;
   }
 }

@@ -7,10 +7,13 @@ class ProductGallery extends Component {
   }
 
   render() {
+    const { selectedImage } = this.state;
+    const { gallery } = this.props;
+
     return (
       <div className="product-gallery">
         <div className="product-gallery_list">
-          {this.props.gallery.map((image) => (
+          {gallery.map((image) => (
             <div key={image} className="product-gallery_list-img-wrapper">
               <img
                 className="product-gallery_list-img"
@@ -25,7 +28,7 @@ class ProductGallery extends Component {
         <div className="product-gallery_main-img-wrapper">
           <img
             className="product-gallery_main-img"
-            src={this.state.selectedImage}
+            src={selectedImage}
             alt="product main"
           />
         </div>

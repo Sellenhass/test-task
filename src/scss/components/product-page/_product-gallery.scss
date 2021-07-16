@@ -5,16 +5,16 @@
     display: flex;
     flex-direction: column;
 
-    margin-right: vw(40px);
+    margin-right: 40px;
   }
 
   &_list-img-wrapper {
-    width: vw(79px);
-    height: vw(80px);
+    width: 79px;
+    height: 80px;
     overflow: hidden;
     display: inline-flex;
 
-    margin-bottom: vw(40px);
+    margin-bottom: 40px;
   }
 
   &_list-img-wrapper:last-child {
@@ -29,8 +29,8 @@
   }
 
   &_main-img-wrapper {
-    width: vw(610px);
-    height: vw(511px);
+    width: 610px;
+    height: 511px;
     overflow: hidden;
     display: inline-flex;
   }

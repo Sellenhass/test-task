@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import classNames from "classnames";
 import { cartActions } from "features/cart-page/duck";
 import { CURRENCY_SYMBOLS } from "constants/enums";
+import Parser from "html-react-parser";
+import { OptionsSelector } from "./components";
 
 class ProductDescription extends Component {
   constructor(props) {
@@ -16,106 +17,76 @@ class ProductDescription extends Component {
       })),
     };
   }
+
+  optionsSelectorOnClickHandler(selectedOptions, attribute, item) {
+    this.setState({
+      selectedOptions: selectedOptions.map((option) =>
+        option.name === attribute.name && option.type === attribute.type
+          ? { ...option, value: item.value }
+          : option
+      ),
+    });
+  }
+
+  addToCartHandler(product, selectedOptions) {
+    this.props.addToCart({
+      ...product,
+      selectedOptions: selectedOptions,
+      amount: 1,
+    });
+  }
+
   render() {
+    const { selectedOptions } = this.state;
+    const { product, currentCurrency } = this.props;
+
     return (
       <div className="product-description">
-        <h1 className="product-description_name">{this.props.product.name}</h1>
-        {this.props.product.attributes.map((attribute) => (
+        <h1 className="product-description_name">{product.name}</h1>
+        {product.attributes.map((attribute) => (
           <div key={attribute.id} className="product-description_option">
             <span className="product-description_option-name">
               {attribute.name}
             </span>
-            <ul className="product-description_option-list">
-              {attribute.items.map((item) =>
-                attribute.type === "swatch" ? (
-                  <li
-                    key={item.id}
-                    className={classNames(
-                      "product-description_option-item product-description_option-item_color",
-                      {
-                        "product-description_option-item_active":
-                          this.state.selectedOptions.some(
-                            (option) =>
-                              option.type === attribute.type &&
-                              option.name === attribute.name &&
-                              option.value === item.value
-                          ),
-                      }
-                    )}
-                    style={{ backgroundColor: item.value }}
-                    onClick={() =>
-                      this.setState({
-                        selectedOptions: this.state.selectedOptions.map(
-                          (option) =>
-                            option.name === attribute.name &&
-                            option.type === attribute.type
-                              ? { ...option, value: item.value }
-                              : option
-                        ),
-                      })
-                    }
-                  />
-                ) : (
-                  <li
-                    key={item.id}
-                    className={classNames("product-description_option-item", {
-                      "product-description_option-item_active":
-                        this.state.selectedOptions.some(
-                          (option) =>
-                            option.type === attribute.type &&
-                            option.name === attribute.name &&
-                            option.value === item.value
-                        ),
-                    })}
-                    onClick={() =>
-                      this.setState({
-                        selectedOptions: this.state.selectedOptions.map(
-                          (option) =>
-                            option.name === attribute.name &&
-                            option.type === attribute.type
-                              ? { ...option, value: item.value }
-                              : option
-                        ),
-                      })
-                    }
-                  >
-                    {item.value}
-                  </li>
+            <OptionsSelector
+              attribute={attribute}
+              selectedOptions={selectedOptions}
+              onClickHandler={(item) =>
+                this.optionsSelectorOnClickHandler(
+                  selectedOptions,
+                  attribute,
+                  item
                 )
-              )}
-            </ul>
+              }
+            />
           </div>
         ))}
 
         <div className="product-description_price-wrapper">
           <span className="product-description_option-name">price</span>
           <span className="product-description_price">
-            {CURRENCY_SYMBOLS[this.props.currentCurrency]}
+            {CURRENCY_SYMBOLS[currentCurrency]}
             {
-              this.props.product.prices.find(
-                (price) => price.currency === this.props.currentCurrency
-              ).amount
+              product.prices.find((price) => price.currency === currentCurrency)
+                .amount
             }
           </span>
         </div>
 
-        <button
-          className="product-description_btn"
-          onClick={() =>
-            this.props.addToCart({
-              ...this.props.product,
-              selectedOptions: this.state.selectedOptions,
-              amount: 1,
-            })
-          }
-        >
-          add to cart
-        </button>
+        {product.inStock ? (
+          <button
+            className="product-description_btn"
+            onClick={() => this.addToCartHandler(product, selectedOptions)}
+          >
+            add to cart
+          </button>
+        ) : (
+          <div className="product-description_out-of-stock">out of stock</div>
+        )}
 
-        <span
-          className="product-description_text"
-          dangerouslySetInnerHTML={{ __html: this.props.product.description }}
-        />
+        <div className="product-description_text">
+          {Parser(product.description)}
+        </div>
       </div>
     );
   }

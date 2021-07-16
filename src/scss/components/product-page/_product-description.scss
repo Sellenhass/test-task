@@ -1,27 +1,27 @@
 .product-description {
-  width: vw(292px);
+  width: 292px;
 
-  margin-left: vw(100px);
+  margin-left: 100px;
 
   &_name {
-    font-size: vw(30px);
+    font-size: 30px;
     font-weight: 600;
 
-    margin-bottom: vw(43px);
+    margin-bottom: 43px;
   }
 
   &_option {
-    margin-bottom: vw(40px);
+    margin-bottom: 40px;
   }
 
   &_option-name {
     font-family: Roboto Condensed;
     font-weight: 700;
-    font-size: vw(18px);
+    font-size: 18px;
     text-transform: uppercase;
 
     display: inline-block;
-    margin-bottom: vw(8px);
+    margin-bottom:8px;
 
     &:after {
       content: ":";
@@ -35,19 +35,19 @@
   }
 
   &_option-item {
-    width: vw(63px);
-    height: vw(45px);
+    width: 63px;
+    height: 45px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    margin-right: vw(12px);
+    margin-right: 12px;
 
-    font-size: vw(16px);
+    font-size: 16px;
     font-family: Source Sans Pro;
 
-    border: vw(1px) solid #000;
+    border: 1px solid #000;
 
     cursor: pointer;
 
@@ -58,7 +58,7 @@
     &_active {
       background-color: #000;
       color: #fff;
-      border: vw(2px) solid #000;
+      border: 2px solid #000;
     }
 
     &:hover {
@@ -68,45 +68,64 @@
 
     &_color {
       &:hover {
-        border: vw(2px) solid #000;
+        border: 2px solid #000;
       }
     }
   }
 
   &_price-wrapper {
-    margin-bottom: vw(40px);
+    margin-bottom: 40px;
   }
 
   &_price {
     display: block;
     font-weight: 700;
-    font-size: vw(24px);
+    font-size: 24px;
   }
 
   &_btn {
     @include input-reset;
     width: 100%;
-    height: vw(52px);
+    height: 52px;
 
     background-color: $color-green;
 
     color: #fff;
     font-family: $basic-font;
     font-weight: 600;
-    font-size: vw(16px);
+    font-size: 16px;
     text-transform: uppercase;
 
-    margin-bottom: vw(40px);
+    margin-bottom: 40px;
 
     &:hover {
       color: $color-green;
       background-color: #fff;
-      border: vw(1px) solid $color-green;
+      border: 1px solid $color-green;
     }
+  }
+
+  &_out-of-stock {
+    width: 100%;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: $color-grey;
+    font-family: $basic-font;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+
+    border: 1px solid $color-grey;
+
+    margin-bottom: 40px;
   }
 
   &_text {
     font-family: Roboto;
-    font-size: vw(16px);
+    font-size: 16px;
   }
 }
