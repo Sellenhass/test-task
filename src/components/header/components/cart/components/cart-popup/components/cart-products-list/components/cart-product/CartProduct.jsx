@@ -27,24 +27,26 @@ class CartProduct extends Component {
             }
           </span>
           <div className="cart-popup_product-options">
-            {product.selectedOptions.map((option) =>
-              option.type === "swatch" ? (
-                <div
-                  key={`${option.name}_${option.value}`}
-                  style={{
-                    backgroundColor: option.value,
-                  }}
-                  className="cart-popup_product-option"
-                />
-              ) : (
-                <div
-                  key={`${option.name}_${option.value}`}
-                  className="cart-popup_product-option"
-                >
-                  {option.value}
-                </div>
-              )
-            )}
+            {product.selectedOptions.map((option) => (
+              <div
+                key={`${option.name}_${option.value}`}
+                className="cart-popup_product-option-wrapper"
+              >
+                <span>{option.name}</span>
+                {option.type === "swatch" ? (
+                  <div
+                    style={{
+                      backgroundColor: option.value,
+                    }}
+                    className="cart-popup_product-option"
+                  />
+                ) : (
+                  <div className="cart-popup_product-option">
+                    {option.value}
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
 

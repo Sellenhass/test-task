@@ -30,31 +30,35 @@ class CartProductGallery extends Component {
 
     return (
       <div className="cart-page_product-img-wrapper">
-        <button
-          className="cart-page_product-img-btn-left"
-          onClick={() => this.changeImageLeft(imageIndex, gallery)}
-        >
-          <img
-            className="cart-page_btn-image-left"
-            src={arrow}
-            alt="arrow-left"
-          />
-        </button>
+        {gallery.length !== 1 ? (
+          <button
+            className="cart-page_product-img-btn-left"
+            onClick={() => this.changeImageLeft(imageIndex, gallery)}
+          >
+            <img
+              className="cart-page_btn-image-left"
+              src={arrow}
+              alt="arrow-left"
+            />
+          </button>
+        ) : null}
         <img
           className="cart-page_product-img"
           src={gallery[imageIndex]}
           alt="product"
         />
-        <button
-          className="cart-page_product-img-btn-right"
-          onClick={() => this.changeImageRight(imageIndex, gallery)}
-        >
-          <img
-            className="cart-page_btn-image-right"
-            src={arrow}
-            alt="arrow-right"
-          />
-        </button>
+        {gallery.length !== 1 ? (
+          <button
+            className="cart-page_product-img-btn-right"
+            onClick={() => this.changeImageRight(imageIndex, gallery)}
+          >
+            <img
+              className="cart-page_btn-image-right"
+              src={arrow}
+              alt="arrow-right"
+            />
+          </button>
+        ) : null}
       </div>
     );
   }

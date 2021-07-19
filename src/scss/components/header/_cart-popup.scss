@@ -61,6 +61,19 @@
 
   &_product-options {
     display: flex;
+    flex-direction: column;
+    padding-right: 8px;
+  }
+
+  &_product-option-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin: 0;
+    }
   }
 
   &_product-option {
